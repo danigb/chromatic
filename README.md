@@ -1,2 +1,3 @@
-# chromatic
-Chromatic scales
+# Chromatic
+
+Chromatic musical scales

@@ -1,0 +1,31 @@
+{
+  "name": "chromatic",
+  "version": "0.1.0",
+  "description": "Chromatic musical scales",
+  "main": "chromatic.js",
+  "scripts": {
+    "test": "vows test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danigb/chromatic.git"
+  },
+  "keywords": [
+    "music",
+    "scale",
+    "scales",
+    "theory",
+    "solfege",
+    "chromatic",
+    "midi"
+  ],
+  "author": "= <=>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danigb/chromatic/issues"
+  },
+  "homepage": "https://github.com/danigb/chromatic#readme",
+  "devDependencies": {
+    "vows": "^0.8.1"
+  }
+}
