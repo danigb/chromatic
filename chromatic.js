@@ -2,9 +2,10 @@
 
 function Chromatic (root, octave, length, descending) {
   if (!root) throw Error('Give me a root, please')
-  root = root.charAt(0).toUpperCase() + root.slice(1).toLowerCase()
   length = length || 12
+  root = root.charAt(0).toUpperCase() + root.slice(1).toLowerCase()
   descending = descending === true ? 1 : 0
+
   return Chromatic.SCALES.reduce(function (all, notes) {
     var scale = find(root, notes)
     if (scale) all.push(octavize(forceLength(reverse(scale, descending), length), octave))
@@ -18,16 +19,6 @@ Chromatic.SCALES = [
   'C C# D D# E F F# G G# A A# B'.split(' '),
   'C# C## D# D## E# F# F## G# G## A# A## B#'.split(' ')
 ]
-
-Chromatic.NAMES = (function () {
-  var names = []
-  Chromatic.SCALES.forEach(function (scale) {
-    scale.forEach(function (note) {
-      if (names.indexOf(note) === -1) names.push(note)
-    })
-  })
-  return names
-})().sort()
 
 function find (root, notes) {
   var index = notes.indexOf(root)
