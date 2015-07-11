@@ -8,7 +8,7 @@ function Chromatic (root, octave, length, descending) {
 
   return Chromatic.SCALES.reduce(function (all, notes) {
     var scale = find(root, notes)
-    if (scale) all.push(octavize(forceLength(reverse(scale, descending), length), octave))
+    if (scale) all.push(octavize(forceLength(reverse(scale, descending), length), octave, descending))
     return all
   }, [])
 }
@@ -29,14 +29,19 @@ function reverse (scale, reverse) {
   return reverse ? rotate(scale.reverse(), scale.length - 1) : scale
 }
 
-function octavize (scale, octave) {
+function octavize (scale, octave, descending) {
   if (!octave) return scale
   octave = +octave
+  var change = descending ? substract : add
   return scale.map(function (note, index) {
-    if (index !== 0 && note[0] === 'C' && scale[index - 1][0] !== 'C') octave++
+    if (index !== 0 && note[0] === 'C' && scale[index - 1][0] !== 'C') {
+      octave = change(octave)
+    }
     return note + octave
   })
 }
+function add (n) { return n + 1 }
+function substract (n) { return n - 1 }
 
 function forceLength (scale, length) {
   var original = scale.length
